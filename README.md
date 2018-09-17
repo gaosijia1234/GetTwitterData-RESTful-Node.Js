@@ -1,7 +1,5 @@
 # GetTwitterData-RESTful-Node.Js
-## Link 
-The link for the website: 
-http://ec2-18-217-227-102.us-east-2.compute.amazonaws.com:8080/
+
 ## Objectives 
 * develop a set of REST APIs capable of reading a JSON file deployed on a server and returning information by using a collection of simple HTTP requests
 * build a single HTML (twitterRest.html) web page in which the requests to the APIs will be invoked and the retrieved information will be displayed
