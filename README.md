@@ -18,4 +18,8 @@ grouped based on tweet ids.
 * Get detailed profile information about a given Twitter user (given the user’s
 screen name).
 
-## Screen Shot of Webpage 
+## Screen Shots
+![alt text](https://github.com/gaosijia1234/GetTwitterData-RESTful-Node.Js/blob/master/webpage_display1.png)
+![alt text](https://github.com/gaosijia1234/GetTwitterData-RESTful-Node.Js/blob/master/webpage_display2.png)
+
+
