@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/Normalize.css">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <title>Twitter</title>
+</head>
+<body id="background">
+<input type="button" value="All the tweets" onclick="call('createTweets')"><br>
+<p> After clicking on the button, it will load all the tweets at the bottom by Ajax instead of linking to another page.
+    It returns an array of objects with all the time id, and text.</p><br><br>
+
+<input type="button" value="All the users" onclick="call('createUsers')"><br>
+<p> After clicking on the button, it will load all the users at the bottom by Ajax instead of linking to another page.
+    It returns an array of objects with all detail information of all users.</p><br><br>
+
+<input type="button" value="External links" onclick="call('createLinks')"><br>
+<p> After clicking on the button, it will load all the external links at the bottom by Ajax instead of linking to another page.
+    It returns an object with user-id as key, external links as values.</p><br><br>
+
+<input type="text" id="inputId" placeholder="input the id to get the tweets" size="40">
+<input type="button" value="submit" onclick="call('findTweetsById/'+getElementById('inputId').value)"><br>
+<p> After clicking on the button, it will load tweets bu the input id.
+    It returns an object of the details about a given tweet (given the tweet’s id).</p><br><br>
+
+<input type="text" id="inputName" placeholder="input the name to get the profile" size="40">
+<input type="button" value="submit" onclick="call('findProfileByName/'+getElementById('inputName').value)"><br>
+<p> After clicking on the button, it will load all the profile information at the bottom by Ajax instead of linking to another page.
+    It returns an object of the profile details about a given user.</p><br><br>
+
+<pre id="jsonView"></pre>
+<script>
+    function loadJSON (url) {
+        // to check which browser the user is using,
+        //var xmlhttp=new XMLHttpRequest();
+        var xmlhttp = false;
+        // branch for native XMLHttpRequest object
+        if (window.XMLHttpRequest){
+            try {
+                xmlhttp = new XMLHttpRequest();
+            } catch (e){
+                xmlhttp = false;
+            }
+        }
+
+        // branch for IE/Windows ActiveX version
+        else if (window.ActiveXObject){
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e){
+                try{
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e){
+                    xmlhttp = false;
+                }
+            }
+        }
+
+        xmlhttp.open("GET",url,false); //open, send, responseText are
+        xmlhttp.send(); //properties of XMLHTTPRequest
+        jsonDoc=xmlhttp.responseText;
+        return JSON.parse(jsonDoc);
+    }
+    function setData(data) {
+        document.getElementById("jsonView").innerHTML = JSON.stringify(data, null, 4);
+        if(data.hasOwnProperty("profile_background_color"))
+            document.getElementById("background").style.backgroundColor = "#"+data["profile_background_color"];
+        else
+            document.getElementById("background").style.backgroundColor = "white";
+    }
+    function call(url) {
+        console.log("/api/"+url);
+        try {
+            setData(loadJSON("/api/"+url));
+        } catch (e) {
+            console.log(e);
+            setData("Input is missing.");
+        }
+    }
+
+</script>
+</body>
+</html>
