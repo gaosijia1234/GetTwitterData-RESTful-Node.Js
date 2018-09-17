@@ -9,11 +9,13 @@ Companies like Twitter have strong RESTful APIs that allows users to explore the
 
 ## Specification
 Your RESTful APIs should be able to respond, with the appropriate data, to the following requests:
-● Get all tweets (create time, id, and tweet text) available in the archive.
-● Get all known Twitter users included in the archive.
-● Get a list of all external links (all links that appear in any field of a tweet. Use
+* Get all tweets (create time, id, and tweet text) available in the archive.
+* Get all known Twitter users included in the archive.
+* Get a list of all external links (all links that appear in any field of a tweet. Use
 regular expressions) included in the tweets from the archive, the links should be
 grouped based on tweet ids.
-● Get the details about a given tweet (given the tweet’s id).
-● Get detailed profile information about a given Twitter user (given the user’s
+* Get the details about a given tweet (given the tweet’s id).
+* Get detailed profile information about a given Twitter user (given the user’s
 screen name).
+
+## Screen Shot of Webpage 
